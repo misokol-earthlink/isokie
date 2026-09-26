@@ -47,11 +47,28 @@
             margin: 0 auto;
         }
 
-        .home-container h1 {
-            margin-top: 30px;
-            font-size: 2rem;
-            font-weight: normal;
-        }
+        .thread-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    width: 100%;
+    margin-top: 35px;
+}
+
+.thread-image {
+    width: 230px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.thread-text {
+    max-width: 430px;
+    text-align: left;
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: #222;
+}
 
         /* Application selector positioned to the left of the centered logo. */
         .app-panel {
@@ -190,7 +207,15 @@
             <img src="ISokieLogo_SM_Clear.png"
                  alt="I_Sokie Enterprises">
 
-            <h1>HOME PAGE</h1>
+            <div class="thread-section">
+    <img src="Thread.png"
+         class="thread-image"
+         alt="Thread">
+
+    <div class="thread-text">
+        A common thread for generating resources for Torah text retrieval and trope processing.
+    </div>
+</div>
         </main>
 
     </div>
