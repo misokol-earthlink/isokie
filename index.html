@@ -11,28 +11,34 @@
         }
 
         html, body {
-            height: 100%;
+            min-height: 100%;
             margin: 0;
         }
 
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             font-family: Arial, sans-serif;
             background-color: white;
         }
 
         .page-layout {
-            position: relative;
             width: 100%;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+        /* Top block: applications on the left, logo centered as before. */
+        .top-section {
+            position: relative;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Keep the existing logo/home-page block centered on the page. */
         .home-container {
             width: 50vw;
             text-align: center;
@@ -47,30 +53,6 @@
             margin: 0 auto;
         }
 
-        .thread-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 45px;
-    width: 100%;
-    margin-top: 35px;
-}
-
-.thread-image {
-    width: 230px;
-    height: auto;
-    flex-shrink: 0;
-}
-
-.thread-text {
-    max-width: 430px;
-    text-align: left;
-    font-size: 1.35rem;
-    line-height: 1.45;
-    color: #222;
-}
-
-        /* Application selector positioned to the left of the centered logo. */
         .app-panel {
             position: absolute;
             right: calc(75% + 35px);
@@ -149,12 +131,34 @@
             overflow-wrap: anywhere;
         }
 
+        /* Separate lower row spanning beneath the entire top block. */
+        .thread-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 35px;
+            width: min(900px, 90vw);
+            margin-top: 28px;
+        }
+
+        .thread-image {
+            width: 155px;
+            height: auto;
+            flex: 0 0 auto;
+        }
+
+        .thread-text {
+            font-size: 1rem;
+            line-height: 1.4;
+            color: #222;
+            text-align: left;
+            white-space: nowrap;
+        }
+
         @media (max-width: 1050px) {
-            .page-layout {
+            .top-section {
                 flex-direction: column;
-                justify-content: center;
                 gap: 28px;
-                padding: 30px 18px;
             }
 
             .app-panel {
@@ -168,6 +172,23 @@
                 width: min(80vw, 650px);
                 order: 1;
             }
+
+            .thread-section {
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .thread-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .thread-text {
+                white-space: normal;
+                text-align: center;
+                max-width: 520px;
+            }
         }
     </style>
 </head>
@@ -175,48 +196,53 @@
 <body>
     <div class="page-layout">
 
-        <aside class="app-panel" aria-label="I_Sokie applications">
-            <h2>Applications</h2>
+        <div class="top-section">
 
-            <a class="app-card trope-card" href="https://trope.isokie.com/">
-                <img class="app-icon" src="https://trope.isokie.com/favicon.ico" alt="">
-                <span class="app-text">
-                    <span class="app-name">Trope Player</span>
-                    <span class="app-domain">trope.isokie.com</span>
-                </span>
-            </a>
+            <aside class="app-panel" aria-label="I_Sokie applications">
+                <h2>Applications</h2>
 
-            <a class="app-card sefaria-card" href="https://sefaria.isokie.com/">
-                <img class="app-icon" src="https://sefaria.isokie.com/favicon.ico" alt="">
-                <span class="app-text">
-                    <span class="app-name">Sefaria Hebrew</span>
-                    <span class="app-domain">sefaria.isokie.com</span>
-                </span>
-            </a>
+                <a class="app-card trope-card" href="https://trope.isokie.com/">
+                    <img class="app-icon" src="https://trope.isokie.com/favicon.ico" alt="">
+                    <span class="app-text">
+                        <span class="app-name">Trope Player</span>
+                        <span class="app-domain">trope.isokie.com</span>
+                    </span>
+                </a>
 
-            <a class="app-card trans-card" href="https://trans.isokie.com/">
-                <img class="app-icon" src="https://trans.isokie.com/favicon.ico" alt="">
-                <span class="app-text">
-                    <span class="app-name">Transliteration Engine</span>
-                    <span class="app-domain">trans.isokie.com</span>
-                </span>
-            </a>
-        </aside>
+                <a class="app-card sefaria-card" href="https://sefaria.isokie.com/">
+                    <img class="app-icon" src="https://sefaria.isokie.com/favicon.ico" alt="">
+                    <span class="app-text">
+                        <span class="app-name">Sefaria Hebrew</span>
+                        <span class="app-domain">sefaria.isokie.com</span>
+                    </span>
+                </a>
 
-        <main class="home-container">
-            <img src="ISokieLogo_SM_Clear.png"
-                 alt="I_Sokie Enterprises">
+                <a class="app-card trans-card" href="https://trans.isokie.com/">
+                    <img class="app-icon" src="https://trans.isokie.com/favicon.ico" alt="">
+                    <span class="app-text">
+                        <span class="app-name">Transliteration Engine</span>
+                        <span class="app-domain">trans.isokie.com</span>
+                    </span>
+                </a>
+            </aside>
 
-            <div class="thread-section">
-    <img src="Thread.png"
-         class="thread-image"
-         alt="Thread">
+            <main class="home-container">
+                <img src="ISokieLogo_SM_Clear.png"
+                     alt="I_Sokie Enterprises">
+            </main>
 
-    <div class="thread-text">
-        A common thread for generating resources for Torah text retrieval and trope processing.
-    </div>
-</div>
-        </main>
+        </div>
+
+        <div class="thread-section">
+            <img src="Thread.png"
+                 class="thread-image"
+                 alt="Thread">
+
+            <div class="thread-text">
+                A common thread for generating resources for<br>
+                Torah text retrieval and trope processing.
+            </div>
+        </div>
 
     </div>
 </body>
