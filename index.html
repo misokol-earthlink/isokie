@@ -53,12 +53,20 @@
             margin: 0 auto;
         }
 
-        .app-panel {
+        /* Center the entire left-hand stack, not the individual panels. */
+        .app-panel-stack {
             position: absolute;
             right: calc(75% + 35px);
             top: 50%;
             transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
             width: 285px;
+        }
+
+        .app-panel {
+            width: 100%;
             padding: 16px;
             border: 2px solid #777;
             border-radius: 12px;
@@ -109,9 +117,6 @@
             background-color: #e9b985;
         }
 
-        .hebrew-app-panel {
-            top: calc(50% + 285px);
-        }
 
         .app-icon {
             width: 38px;
@@ -169,15 +174,11 @@
                 gap: 28px;
             }
 
-            .app-panel {
+            .app-panel-stack {
                 position: static;
                 transform: none;
                 width: min(90vw, 360px);
                 order: 2;
-            }
-
-            .hebrew-app-panel {
-                top: auto;
             }
 
             .home-container {
@@ -210,6 +211,7 @@
 
         <div class="top-section">
 
+            <div class="app-panel-stack">
             <aside class="app-panel" aria-label="I_Sokie applications">
                 <h2>Trope Applications</h2>
 
@@ -249,6 +251,7 @@
                     </span>
                 </a>
             </aside>
+            </div>
 
             <main class="home-container">
                 <img src="ISokieLogo_SM_Clear.png"
