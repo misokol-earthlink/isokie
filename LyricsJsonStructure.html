@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lyrics JSON File Structure</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 24px;
+    font-family: Arial, sans-serif;
+    background: #eef3f6;
+    color: #222;
+}
+
+.info-card {
+    width: min(1240px, 96vw);
+    margin: 0 auto;
+    background: #fff;
+    border: 2px solid #777;
+    border-radius: 14px;
+    box-shadow: 0 6px 22px rgba(0,0,0,.16);
+    overflow: hidden;
+}
+
+.header {
+    padding: 18px 28px;
+    border-bottom: 1px solid #bbb;
+    background: #f8fafb;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.65rem;
+    color: #183b5b;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: minmax(500px, 52%) 1fr;
+    gap: 30px;
+    padding: 28px;
+    align-items: start;
+}
+
+.graphic-column {
+    position: sticky;
+    top: 20px;
+}
+
+.graphic-title {
+    margin: 0 0 10px;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+/* The example deliberately reproduces the Word document's
+   full-line block shading. Each nested JSON level is a horizontal
+   band so the vertical sandwich/block structure remains visible. */
+.json-structure {
+    border: 1px solid #777;
+    background: #fff;
+    padding: 14px;
+    border-radius: 8px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.45;
+    overflow-x: auto;
+}
+
+.jline {
+    display: block;
+    min-height: 1.45em;
+    white-space: pre;
+    margin: 0;
+    padding: 1px 6px;
+}
+
+.outer-brace { color: #ee0000; font-weight: bold; }
+.title-value { color: #77206d; }
+
+/* Exact shading colors taken from the source Word document. */
+.lines-band { background: #FF99FF; }
+.line1-shell { background: #CCFFFF; }
+.line1-words { background: #66FFFF; }
+.line2-shell { background: #CCFF99; }
+.line2-words { background: #99FF66; }
+
+.hebrew {
+    font-family: "Times New Roman", serif;
+    font-size: 18px;
+}
+
+.legend {
+    margin-top: 14px;
+    font-size: .84rem;
+    line-height: 1.5;
+}
+
+.legend-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0;
+}
+
+.swatch {
+    width: 42px;
+    height: 18px;
+    border: 1px solid #777;
+    flex: 0 0 42px;
+}
+
+.text-column {
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+.text-column p { margin: 0 0 16px; }
+
+.text-column h2 {
+    margin: 4px 0 10px;
+    font-size: 1.18rem;
+    color: #183b5b;
+}
+
+.text-column code {
+    background: #f2f2f2;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+.note {
+    padding: 12px 14px;
+    border-left: 4px solid #777;
+    background: #f7f7f7;
+    margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+    body { padding: 10px; }
+    .content { grid-template-columns: 1fr; padding: 18px; }
+    .graphic-column { position: static; }
+}
+</style>
+</head>
+<body>
+
+<div class="info-card">
+    <div class="header">
+        <h1>Lyrics JSON File Structure Common to Applications</h1>
+    </div>
+
+    <div class="content">
+
+        <section class="graphic-column" aria-label="Lyrics JSON structure example">
+            <h2 class="graphic-title">Example Lyrics JSON structure</h2>
+
+            <div class="json-structure" role="img"
+                 aria-label="Color-coded nested Lyrics JSON structure">
+<span class="jline"><span class="outer-brace">{</span>  <span class="title-value">"title": "Ki Teitzei-PT",</span></span>
+<span class="jline lines-band">  "lines": [</span>
+<span class="jline line1-shell">    { "lineName": "DE:25:18",</span>
+<span class="jline line1-words">      "words": [</span>
+<span class="jline line1-words">        { "hebrew": "<span class="hebrew">אֲשֶׁ֨ר</span>",</span>
+<span class="jline line1-words">          "translit": "asher"</span>
+<span class="jline line1-words">        },</span>
+<span class="jline line1-words">        {"hebrew": "<span class="hebrew">אֱלֹהִֽים׃</span>",</span>
+<span class="jline line1-words">          "translit": "Elohim"</span>
+<span class="jline line1-words">        }</span>
+<span class="jline line1-words">      ]                         ← end of word array for line 1</span>
+<span class="jline line1-shell">    },                          ← end of line 1</span>
+<span class="jline line2-shell">    { "lineName": "DE:25:19",</span>
+<span class="jline line2-words">      "words": [</span>
+<span class="jline line2-words">        { "hebrew": "<span class="hebrew">וְהָיָ֡ה</span>",</span>
+<span class="jline line2-words">          "translit": "v’hayah"</span>
+<span class="jline line2-words">        },</span>
+<span class="jline line2-words">        {"hebrew": "<span class="hebrew">תִּשְׁכָּֽח׃</span>",</span>
+<span class="jline line2-words">          "translit": "tishkach"</span>
+<span class="jline line2-words">        }</span>
+<span class="jline line2-words">      ]                         ← end of word array for line 2</span>
+<span class="jline line2-shell">    }                           ← end of line 2</span>
+<span class="jline lines-band">  ]                             ← end of line array</span>
+<span class="jline"><span class="outer-brace">}</span></span>
+            </div>
+
+            <div class="legend">
+                <div class="legend-row"><span class="swatch lines-band"></span> Lines-array delimiters</div>
+                <div class="legend-row"><span class="swatch line1-shell"></span> Line 1 outer delimiters</div>
+                <div class="legend-row"><span class="swatch line1-words"></span> Line 1 word-array block</div>
+                <div class="legend-row"><span class="swatch line2-shell"></span> Line 2 outer delimiters</div>
+                <div class="legend-row"><span class="swatch line2-words"></span> Line 2 word-array block</div>
+            </div>
+        </section>
+
+        <section class="text-column">
+            <h2>File naming</h2>
+            <p>
+                File names may be any text descriptive of the contents, but the file name
+                needs to end in the string <code>_Lyrics</code>. Examples are
+                <code>Yitro_Lyrics.json</code> and <code>Zachor Maftir_Lyrics.json</code>.
+                For sample files included in the website, the name is used to access
+                appropriate resources. User files only need names shared as
+                <code>filename.json</code> for the trope sequence and
+                <code>filename_Lyrics.json</code> for the lyrics for the part.
+            </p>
+
+            <h2>Lyrics structure</h2>
+            <p>
+                The Lyrics JSON file has the structure displayed at left. Each lyric word
+                is represented by Hebrew characters and possibly punctuation, vowels, and
+                trope marks associated with the key <code>"hebrew"</code>, with English
+                transliteration associated with the key <code>"translit"</code>.
+            </p>
+
+            <p>
+                The colors in the example indicate common levels of grouping within the
+                JSON object. The full-width colored bands make the nested structure visible:
+                each word-array block is enclosed by the delimiters for its line, and the
+                line objects are enclosed by the delimiters for the overall
+                <code>"lines"</code> array.
+            </p>
+
+            <h2>Pocket Torah compatibility</h2>
+            <p>
+                The title can be any string; however, if the files are compatible with
+                Pocket Torah, the title must end in <code>-PT</code>. Line names can also
+                be any string, but for Pocket Torah compatibility they must match the
+                Book, Chapter, and Verse of the source text.
+            </p>
+
+            <p>
+                In the example at left, the verses are from chapter 25 of Deuteronomy.
+                The title references the parsha as <code>Ki Teitzei</code>, but that part
+                of the title can be any meaningful string as long as the
+                <code>-PT</code> ending is preserved.
+            </p>
+
+            <h2>Lines and words</h2>
+            <p>
+                Words do not have an identifier similar to the lines and are added to the
+                line array as necessary. Additional line objects accommodate the line
+                count for the portion.
+            </p>
+
+            <div class="note">
+                The portion does not have to be a Torah source, but such text cannot be
+                Pocket Torah compatible and there may be no associated audio available
+                for the selection. The Lyrics file can still define the displayed Hebrew
+                text of a reference, such as a prayer text from the Siddur.
+            </div>
+        </section>
+
+    </div>
+</div>
+
+</body>
+</html>
