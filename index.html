@@ -233,6 +233,21 @@
             background: white;
         }
 
+.thread-image-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.thread-click-note {
+    margin-top: 2px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
         @media (max-width: 1050px) {
             .top-section {
                 flex-direction: column;
@@ -325,21 +340,27 @@
 
         </div>
 
-        <div class="thread-section">
-            <img src="Thread.png"
-                 class="thread-image"
-                 id="threadSpool"
-                 alt="Thread"
-                 role="button"
-                 tabindex="0"
-                 aria-label="Open Lyrics JSON structure"
-                 aria-haspopup="dialog">
+       <div class="thread-section">
 
-            <div class="thread-text">
-                A common thread for generating resources for<br>
-                Torah text retrieval and trope processing.
-            </div>
-        </div>
+    <div class="thread-image-group">
+        <img src="Thread.png"
+             class="thread-image"
+             id="threadSpool"
+             alt="Thread"
+             role="button"
+             tabindex="0"
+             aria-label="Open Lyrics JSON structure"
+             aria-haspopup="dialog">
+
+        <div class="thread-click-note">Click Here</div>
+    </div>
+
+    <div class="thread-text">
+        A common thread for generating resources for<br>
+        Torah text retrieval and trope processing.
+    </div>
+
+</div>
 
         <div id="lyricsModal"
              class="reference-modal"
