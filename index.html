@@ -32,15 +32,24 @@
 
         /* Top block: applications on the left, logo centered as before. */
         .top-section {
-            position: relative;
             width: 100%;
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            column-gap: 50px;
             align-items: center;
+            padding: 0 30px;
+        }
+
+        .right-content {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .home-container {
-            width: 50vw;
+            width: 100%;
             text-align: center;
         }
 
@@ -54,17 +63,14 @@
         }
 
         /* Center the entire left-hand stack, not the individual panels. */
-.app-panel-stack {
-    position: absolute;
-    left: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    width: max-content;
-    align-items: stretch;
-}
+        .app-panel-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: max-content;
+            align-items: stretch;
+        }
+
         .app-panel {
             width: 100%;
             padding: 16px;
@@ -167,7 +173,7 @@
             align-items: center;
             justify-content: center;
             gap: 35px;
-            width: min(900px, 90vw);
+            width: min(900px, 100%);
             margin-top: 28px;
         }
 
@@ -267,15 +273,14 @@
 
         @media (max-width: 1050px) {
             .top-section {
-                flex-direction: column;
-                gap: 28px;
+                grid-template-columns: 1fr;
+                row-gap: 28px;
+                padding: 0 20px;
             }
 
             .app-panel-stack {
-                position: static;
-                transform: none;
-                width: min(90vw, 360px);
-                align-items: stretch;
+                width: min(90vw, 620px);
+                justify-self: center;
                 order: 2;
             }
 
@@ -290,9 +295,12 @@
                 grid-auto-columns: auto;
             }
 
+            .right-content {
+                order: 1;
+            }
+
             .home-container {
                 width: min(80vw, 650px);
-                order: 1;
             }
 
             .thread-section {
@@ -374,14 +382,12 @@
             </aside>
             </div>
 
+            <div class="right-content">
             <main class="home-container">
                 <img src="ISokieLogo_SM_Clear.png"
                      alt="I_Sokie Enterprises">
             </main>
-
-        </div>
-
-       <div class="thread-section">
+                <div class="thread-section">
 
     <div class="thread-image-group">
         <img src="Thread.png"
@@ -402,6 +408,9 @@
     </div>
 
 </div>
+            </div>
+
+        </div>
 
         <div id="lyricsModal"
              class="reference-modal"
